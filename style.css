@@ -76,6 +76,7 @@ body {
 .comment__actions {
     align-items: center;    
     display: flex;
+<<<<<<< HEAD
     justify-content: space-between;        
     width: 30%;
 }
@@ -98,4 +99,9 @@ body {
 
 .comment__actions img {
     margin-right: 0.5rem;
+=======
+    justify-content: flex-end;    
+    flex-grow: 2;    
+    width: auto;
+>>>>>>> 27edacf23a74055f2df9539d2b6e457b9821eabf
 }
