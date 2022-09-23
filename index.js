@@ -20,6 +20,9 @@ function replyToReply (id) {
     }        
 }
 
+function deleteComment() {
+    document.getElementById("modal").style.display = block;
+}
 
 
 async function getComments() {
@@ -66,9 +69,9 @@ async function renderComments() {
                             <div class="comment__info_date">${comment.createdAt}</div>          
                         </div>        
                         <div class="comment__actions">
-                            <button id="${comment.id}" class="comment__actions_button comment__actions--purple ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                            <button id="${comment.id}" class="comment__actions_button comment__actions--red ${deleteVisible}"><img src="images/icon-delete.svg" alt="">Deletar</button>    
-                            <button id="${comment.id}" class="comment__actions_button comment__actions--purple ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                            <button id="${comment.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                            <button id="${comment.id}" class="comment__actions_button red_font ${deleteVisible}"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                            <button id="${comment.id}" class="comment__actions_button purple_font ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
                         </div>                  
                     </div>  
                     <div class="comment__text">${comment.content}</div>     
@@ -114,9 +117,9 @@ async function renderComments() {
                                 <div class="comment__info_date">${replie.createdAt}</div>          
                             </div>        
                             <div class="comment__actions">
-                                <button id="${replie.id}" class="comment__actions_button comment__actions--purple ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                                <button id="${replie.id}" class="comment__actions_button comment__actions--red ${deleteVisible}"><img src="images/icon-delete.svg" alt="">Deletar</button>    
-                                <button id="${replie.id}" class="comment__actions_button comment__actions--purple ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                                <button id="${replie.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                                <button id="${replie.id}" class="comment__actions_button red_font ${deleteVisible}"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                                <button id="${replie.id}" class="comment__actions_button purple_font ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
                             </div>                  
                         </div>  
                         <div class="comment__text">${replie.content}</div>     
