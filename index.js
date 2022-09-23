@@ -1,15 +1,25 @@
-function enableDisableButton (id) {   
+function replyToComment (id) {   
     
     if (document.getElementById(id).classList.contains('disabled')) {
         document.getElementById(id).classList.remove('disabled');
-        document.getElementById("reply_"+id).classList.add('invisible');        
+        document.getElementById("replyToComment_"+id).classList.add('invisible');        
     } else {
         document.getElementById(id).classList.add('disabled');        
-        document.getElementById("reply_"+id).classList.remove('invisible');        
-    }    
-
-    
+        document.getElementById("replyToComment_"+id).classList.remove('invisible');        
+    }        
 }
+
+function replyToReply (id) {   
+    
+    if (document.getElementById(id).classList.contains('disabled')) {
+        document.getElementById(id).classList.remove('disabled');
+        document.getElementById("replyToReply_"+id).classList.add('invisible');        
+    } else {
+        document.getElementById(id).classList.add('disabled');        
+        document.getElementById("replyToReply_"+id).classList.remove('invisible');        
+    }        
+}
+
 
 
 async function getComments() {
@@ -56,19 +66,19 @@ async function renderComments() {
                             <div class="comment__info_date">${comment.createdAt}</div>          
                         </div>        
                         <div class="comment__actions">
-                            <button id="${comment.id}" class="button comment__actions--purple ${replyVisible}" onclick="enableDisableButton(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                            <button id="${comment.id}" class="button comment__actions--red ${deleteVisible}" onclick="enableDisableButton(${comment.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
-                            <button id="${comment.id}" class="button comment__actions--purple ${editVisible}" onclick="enableDisableButton(${comment.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                            <button id="${comment.id}" class="comment__actions_button comment__actions--purple ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                            <button id="${comment.id}" class="comment__actions_button comment__actions--red ${deleteVisible}"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                            <button id="${comment.id}" class="comment__actions_button comment__actions--purple ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
                         </div>                  
                     </div>  
                     <div class="comment__text">${comment.content}</div>     
                 </div>        
             </div>
             
-            <div id="reply_${comment.id}" class="comment comment_send invisible">      
+            <div id="replyToComment_${comment.id}" class="comment comment_send invisible">      
                 <img class="comment__info_avatar" src="${comments.currentUser.image.png}"></img>
                 <textarea class="comment__textarea" placeholder="Adicione um comentário..." form=""></textarea>
-                <button class="comment__sendbutton">Responder</button>      
+                <button class="comment__send_button">Responder</button>      
             </div>            
 
             `;   
@@ -104,19 +114,19 @@ async function renderComments() {
                                 <div class="comment__info_date">${replie.createdAt}</div>          
                             </div>        
                             <div class="comment__actions">
-                                <button class="button comment__actions--purple ${replyVisible}"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                                <button class="button comment__actions--red ${deleteVisible}"><img src="images/icon-delete.svg" alt="">Deletar</button>    
-                                <button class="button comment__actions--purple ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                                <button id="${replie.id}" class="comment__actions_button comment__actions--purple ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                                <button id="${replie.id}" class="comment__actions_button comment__actions--red ${deleteVisible}"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                                <button id="${replie.id}" class="comment__actions_button comment__actions--purple ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
                             </div>                  
                         </div>  
                         <div class="comment__text">${replie.content}</div>     
                     </div>          
                 </div>   
 
-                <div class="comment_reply invisible">
+                <div id="replyToReply_${replie.id}" class="comment_reply invisible">
                     <img class="comment__info_avatar" src="${comments.currentUser.image.png}"></img>
                     <textarea class="comment_reply__textarea" placeholder="Adicione um comentário..." form=""></textarea>
-                    <button class="comment__sendbutton">Responder</button>
+                    <button class="comment__send_button">Responder</button>
                 </div>`                
             
             html += htmlSegment;                
@@ -128,7 +138,7 @@ async function renderComments() {
         `<div class="comment comment_send">      
             <img class="comment__info_avatar" src="${comments.currentUser.image.png}"></img>
             <textarea class="comment__textarea" placeholder="Adicione um comentário..." form=""></textarea>
-            <button class="comment__sendbutton">Enviar</button>      
+            <button class="comment__send_button">Enviar</button>      
         </div>`
 
     html += htmlSegment;        
