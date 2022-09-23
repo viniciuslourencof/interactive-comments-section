@@ -18,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;    
-    height: 80%;
+    height: auto;
     width: 70%;
 }
 
@@ -34,7 +34,7 @@ body {
     width: 100%;     
 }
 
-.comment__interactions {
+.comment__score {
     align-items: center;
     background-color: hsl(223, 19%, 93%);
     border-radius: 5px;
@@ -46,16 +46,20 @@ body {
     width: 3rem;
 }
 
-.comment__interactions span {
-    color: #5B59A1;
+.comment__score span {
+    color: #5B59A1;    
     font-weight: bold;
+}
+
+.comment__score img {
+    cursor: pointer;    
 }
 
 .comment__info {
     align-items: center;    
     display: flex;
     justify-content: space-between;    
-    width: 35%;    
+    width: 15rem;    
 }
 
 .comment__info_avatar {
@@ -76,8 +80,8 @@ body {
 .comment__actions {
     align-items: center;    
     display: flex;
-    justify-content: space-between;        
-    width: 40%;
+    justify-content: flex-end;        
+    width: 20rem;
 }
 
 .button {
@@ -86,6 +90,7 @@ body {
     background-color: transparent;
     font-weight: 700;
     font-size: 1rem;    
+    margin-left: 2rem;
 }
 
 .comment__actions--purple {
@@ -98,10 +103,6 @@ body {
 
 .comment__actions img {
     margin-right: 0.5rem;
-}
-
-.comment__interactions img {
-    cursor: pointer;    
 }
 
 .comment__textarea {    
@@ -140,10 +141,11 @@ body {
     display: flex;
     height: 20%;
     justify-content: space-between;
-    padding: 1rem;
-    width: 80%;
+    margin-bottom: 1rem;
     left: 20%;
+    padding: 1rem;
     position: relative;
+    width: 80%;
 }
 
 .comment_reply__textarea {
@@ -161,4 +163,8 @@ body {
 
 .invisible {
     display: none;
+}
+
+.disabled {
+    opacity: 0.5;
 }
