@@ -19,7 +19,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;    
     height: 80%;
-    width: 50%;
+    width: 70%;
 }
 
 .comment {
@@ -27,7 +27,7 @@ body {
     background-color: white;
     border-radius: 5px;
     display: flex;
-    height: 20%;
+    height: 30%;
     justify-content: space-between;
     margin-bottom: 1rem;
     padding: 1rem;   
