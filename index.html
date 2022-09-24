@@ -17,18 +17,22 @@
 <body>
   <main>
 
-  <div class="comments">  
+  <div class="comments" id="comments">  
   <!-- Pull dynamic content from the data.json file -->  
-  </div>
+  </div>  
+  
 
   <div class="modal">
-    <h1>Deletar Comentário</h1>
-    <p>Você tem certeza que quer deletar o comentário? Essa ação é irreversivel.</p>
-    <button class="comment__send_button gray_bg">Não, cancele</button>
-    <button class="comment__send_button red_bg">Sim, delete</button>
-  </div>
+    <div class="modal-content">
+      <h1>Deletar Comentário</h1>
+      <p>Você tem certeza que quer deletar o comentário? Essa ação é irreversivel.</p>
+      <button class="comment__send_button gray_bg close-button" onclick="toggleModal()">Não, cancele</button>
+      <button class="comment__send_button red_bg">Sim, delete</button>
+    </div>
+  </div>  
 
   </main>
+
   
 </body>
 </html>

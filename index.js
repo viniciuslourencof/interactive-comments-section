@@ -1,3 +1,13 @@
+function toggleModal() {        
+    document.querySelector(".modal").classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === document.querySelector(".modal")) {
+        toggleModal();
+    }
+}
+
 function replyToComment (id) {   
     
     if (document.getElementById(id).classList.contains('disabled')) {
@@ -19,11 +29,6 @@ function replyToReply (id) {
         document.getElementById("replyToReply_"+id).classList.remove('invisible');        
     }        
 }
-
-function deleteComment() {
-    document.getElementById("modal").style.display = block;
-}
-
 
 async function getComments() {
     let url = 'https://raw.githubusercontent.com/viniciuslourencof/interactive-comments-section/main/data.json';
@@ -70,7 +75,7 @@ async function renderComments() {
                         </div>        
                         <div class="comment__actions">
                             <button id="${comment.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                            <button id="${comment.id}" class="comment__actions_button red_font ${deleteVisible}"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                            <button id="${comment.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal()"><img src="images/icon-delete.svg" alt="">Deletar</button>    
                             <button id="${comment.id}" class="comment__actions_button purple_font ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
                         </div>                  
                     </div>  
@@ -118,7 +123,7 @@ async function renderComments() {
                             </div>        
                             <div class="comment__actions">
                                 <button id="${replie.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                                <button id="${replie.id}" class="comment__actions_button red_font ${deleteVisible}"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                                <button id="${replie.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal()"><img src="images/icon-delete.svg" alt="">Deletar</button>    
                                 <button id="${replie.id}" class="comment__actions_button purple_font ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
                             </div>                  
                         </div>  
@@ -147,9 +152,9 @@ async function renderComments() {
     html += htmlSegment;        
 
     let container = document.querySelector('.comments');
-    container.innerHTML = html;
-
-    
+    container.innerHTML = html;    
 }
 
 renderComments();
+
+window.addEventListener("click", windowOnClick);       
