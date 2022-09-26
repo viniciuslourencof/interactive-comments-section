@@ -36,7 +36,6 @@ body main {
     margin-bottom: 1rem;
     padding: 1rem;   
     width: 100%;        
-    transition: display 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;     
 }
 
 .comment__score {

@@ -1,11 +1,19 @@
 function toggleModal() {        
-    document.querySelector(".modal").classList.toggle("show-modal");
+    document.querySelector(".modal").classList.toggle("show-modal");    
 }
 
 function windowOnClick(event) {
     if (event.target === document.querySelector(".modal")) {
         toggleModal();
     }
+}
+
+function disableButton(id) {
+    if (document.getElementById(id).classList.contains('disabled')) {
+        document.getElementById(id).classList.remove('disabled');     
+    } else {
+        document.getElementById(id).classList.add('disabled');        
+    }        
 }
 
 function replyToComment (id) {   
@@ -75,7 +83,7 @@ async function renderComments() {
                         </div>        
                         <div class="comment__actions">
                             <button id="${comment.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                            <button id="${comment.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal()"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                            <button id="${comment.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(); disableButton(${comment.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
                             <button id="${comment.id}" class="comment__actions_button purple_font ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
                         </div>                  
                     </div>  
@@ -123,7 +131,7 @@ async function renderComments() {
                             </div>        
                             <div class="comment__actions">
                                 <button id="${replie.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                                <button id="${replie.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal()"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                                <button id="${replie.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(); disableButton(${replie.id})><img src="images/icon-delete.svg" alt="">Deletar</button>    
                                 <button id="${replie.id}" class="comment__actions_button purple_font ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
                             </div>                  
                         </div>  
