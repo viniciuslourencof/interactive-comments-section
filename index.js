@@ -1,13 +1,20 @@
-function toggleModal(id) {        
+function toggleModal(id) {    
+    let buttonId;
+    
     document.querySelector(".modal").classList.toggle("show-modal");        
 
-    // if (!id)
-    //     document.querySelector(".modal").classList
+    if (id) {
+        document.querySelector(".modal").id = id;
+        buttonId = id; 
+    }
+    else {
+        buttonId = document.querySelector(".modal").id;
+    }
 
-    if (document.getElementById("buttonDelete_"+id).classList.contains('disabled')) {
-        document.getElementById("buttonDelete_"+id).classList.remove('disabled');        
+    if (document.getElementById("buttonDelete_"+buttonId).classList.contains('disabled')) {
+        document.getElementById("buttonDelete_"+buttonId).classList.remove('disabled');        
     } else {
-        document.getElementById("buttonDelete_"+id).classList.add('disabled');                
+        document.getElementById("buttonDelete_"+buttonId).classList.add('disabled');                
     }           
 }
 
