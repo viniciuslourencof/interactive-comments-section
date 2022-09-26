@@ -1,5 +1,14 @@
-function toggleModal() {        
-    document.querySelector(".modal").classList.toggle("show-modal");    
+function toggleModal(id) {        
+    document.querySelector(".modal").classList.toggle("show-modal");        
+
+    // if (!id)
+    //     document.querySelector(".modal").classList
+
+    if (document.getElementById("buttonDelete_"+id).classList.contains('disabled')) {
+        document.getElementById("buttonDelete_"+id).classList.remove('disabled');        
+    } else {
+        document.getElementById("buttonDelete_"+id).classList.add('disabled');                
+    }           
 }
 
 function windowOnClick(event) {
@@ -8,33 +17,49 @@ function windowOnClick(event) {
     }
 }
 
-function disableButton(id) {
-    if (document.getElementById(id).classList.contains('disabled')) {
-        document.getElementById(id).classList.remove('disabled');     
-    } else {
-        document.getElementById(id).classList.add('disabled');        
+function editComment(id) {
+    if (document.getElementById("buttonEdit_"+id).classList.contains('disabled')) {
 
-    }        
+        document.getElementById("buttonEdit_"+id).classList.remove('disabled');
+        document.getElementById("updateComment_"+id).classList.add('invisible');        
+
+        if (document.getElementById("comment_"+id))     
+            document.getElementById("comment_"+id).classList.remove('invisible');
+
+        if (document.getElementById("commentReply_"+id))                        
+            document.getElementById("commentReply_"+id).classList.remove('invisible');     
+
+    } else {
+
+        document.getElementById("buttonEdit_"+id).classList.add('disabled'); 
+        document.getElementById("updateComment_"+id).classList.remove('invisible');        
+
+        if (document.getElementById("comment_"+id))
+            document.getElementById("comment_"+id).classList.add('invisible');                
+
+        if (document.getElementById("commentReply_"+id))            
+            document.getElementById("commentReply_"+id).classList.add('invisible');                
+
+    }         
 }
 
-function replyToComment (id) {   
-    
-    if (document.getElementById(id).classList.contains('disabled')) {
-        document.getElementById(id).classList.remove('disabled');
+function replyToComment (id) {       
+    if (document.getElementById("buttonReply_"+id).classList.contains('disabled')) {
+        document.getElementById("buttonReply_"+id).classList.remove('disabled');
         document.getElementById("replyToComment_"+id).classList.add('invisible');        
     } else {
-        document.getElementById(id).classList.add('disabled');        
+        document.getElementById("buttonReply_"+id).classList.add('disabled');        
         document.getElementById("replyToComment_"+id).classList.remove('invisible');        
     }        
 }
 
 function replyToReply (id) {   
     
-    if (document.getElementById(id).classList.contains('disabled')) {
-        document.getElementById(id).classList.remove('disabled');
+    if (document.getElementById("buttonReply_"+id).classList.contains('disabled')) {
+        document.getElementById("buttonReply_"+id).classList.remove('disabled');
         document.getElementById("replyToReply_"+id).classList.add('invisible');        
     } else {
-        document.getElementById(id).classList.add('disabled');        
+        document.getElementById("buttonReply_"+id).classList.add('disabled');        
         document.getElementById("replyToReply_"+id).classList.remove('invisible');        
     }        
 }
@@ -68,7 +93,7 @@ async function renderComments() {
         }
 
         let htmlSegment = 
-            `<div class="comment">
+            `<div class="comment" id="comment_${comment.id}">
                 <div class="comment__score">
                     <img src="images/icon-plus.svg" alt="">
                     <span>${comment.score}</span>
@@ -83,9 +108,9 @@ async function renderComments() {
                             <div class="comment__info_date">${comment.createdAt}</div>          
                         </div>        
                         <div class="comment__actions">
-                            <button id="${comment.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                            <button id="${comment.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal()"><img src="images/icon-delete.svg" alt="">Deletar</button>    
-                            <button id="${comment.id}" class="comment__actions_button purple_font ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                            <button id="buttonReply_${comment.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                            <button id="buttonDelete_${comment.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(${comment.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                            <button id="buttonEdit_${comment.id}" class="comment__actions_button purple_font ${editVisible}" onclick="editComment(${comment.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
                         </div>                  
                     </div>  
                     <div class="comment__text">${comment.content}</div>     
@@ -98,7 +123,28 @@ async function renderComments() {
                 <button class="comment__send_button">Responder</button>      
             </div>            
 
-            `;   
+            <div class="comment invisible" id="updateComment_${comment.id}">
+                <div class="comment__score">
+                    <img src="images/icon-plus.svg" alt="">
+                    <span>${comment.score}</span>
+                    <img src="images/icon-minus.svg" alt="">
+                </div>
+        
+                <div class="comment__container">
+                    <div class="comment__topline">
+                        <div class="comment__info">
+                            <img class="comment__info_avatar" src="${comment.user.image.png}"></img>
+                            <div class="comment__info_user">${comment.user.username}</div>
+                            <div class="comment__info_date">${comment.createdAt}</div>          
+                        </div>        
+                        <div class="comment__actions">
+                            <button id="buttonEdit_${comment.id}" class="comment__actions_button purple_font ${editVisible} disabled" onclick="editComment(${comment.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                        </div>                                                                                  
+                    </div>  
+                    <textarea class="comment__textarea" form="">${comment.content}</textarea> 
+                    <button class="comment__send_button">Atualizar</button>                                   
+                </div>        
+            </div>`;   
             
         html += htmlSegment;               
             
@@ -116,7 +162,7 @@ async function renderComments() {
             }            
 
             let htmlSegment = 
-                `<div class="comment_reply">
+                `<div class="comment_reply" id="commentReply_${replie.id}">
                     <div class="comment__score">
                         <img src="images/icon-plus.svg" alt="">
                         <span>${replie.score}</span>
@@ -131,9 +177,9 @@ async function renderComments() {
                                 <div class="comment__info_date">${replie.createdAt}</div>          
                             </div>        
                             <div class="comment__actions">
-                                <button id="${replie.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                                <button id="${replie.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal()"><img src="images/icon-delete.svg" alt="">Deletar</button>    
-                                <button id="${replie.id}" class="comment__actions_button purple_font ${editVisible}"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                                <button id="buttonReply_${replie.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                                <button id="buttonDelete_${replie.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(${replie.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                                <button id="buttonEdit_${replie.id}" class="comment__actions_button purple_font ${editVisible}" onclick="editComment(${replie.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
                             </div>                  
                         </div>  
                         <div class="comment__text">${replie.content}</div>     
@@ -144,7 +190,35 @@ async function renderComments() {
                     <img class="comment__info_avatar" src="${comments.currentUser.image.png}"></img>
                     <textarea class="comment_reply__textarea" placeholder="Adicione um comentário..." form=""></textarea>
                     <button class="comment__send_button">Responder</button>
-                </div>`                
+                </div>
+                
+                <div class="comment_reply invisible" id="updateComment_${replie.id}">
+                    <div class="comment__score">
+                        <img src="images/icon-plus.svg" alt="">
+                        <span>${replie.score}</span>
+                        <img src="images/icon-minus.svg" alt="">
+                    </div>
+                    
+                    <div class="comment_update__container">                                                             
+                        <div class="comment__topline">
+                            <div class="comment__info">
+                                <img class="comment__info_avatar" src="${replie.user.image.png}"></img>
+                                <div class="comment__info_user">${replie.user.username}</div>
+                                <div class="comment__info_date">${replie.createdAt}</div>          
+                            </div>    
+                            <div class="comment__actions">
+                                <button id="buttonEdit_${replie.id}" class="comment__actions_button purple_font ${editVisible} disabled" onclick="editComment(${replie.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                            </div>                                                                   
+                        </div>         
+                        
+                        <div class="comment__bottomline">
+                            <textarea class="comment_reply__textarea" form="">${replie.content}</textarea>
+                            <button class="comment__send_button">Atualizar</button>                                   
+                        </div>         
+                    </div>                                                                               
+                </div>`
+                
+                
             
             html += htmlSegment;                
 

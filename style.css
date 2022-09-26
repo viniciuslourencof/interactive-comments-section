@@ -10,7 +10,7 @@ body main {
     background-color: hsl(223, 19%, 93%);
     color: #7C7C7C;
     display: flex;
-    height: auto;
+    height: 100vh;
     justify-content: center;
 }
 
@@ -20,10 +20,6 @@ body main {
     justify-content: flex-start;    
     height: auto;
     width: 70%;    
-}
-
-.comments:first-child {
-    margin-top: 1rem;
 }
 
 .comment {
@@ -223,4 +219,19 @@ body main {
 .gray_bg {
     background-color: #68727E;
     color: white;
+}
+
+.comment_update__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.comment__bottomline {
+    width: 100%;
+}
+.comment__bottomline textarea { 
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
 }
