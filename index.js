@@ -83,7 +83,7 @@ async function getComments() {
 
 async function renderComments() {
     let comments = await getComments();
-    let html = '', currentUsername = comments.currentUser.username, editVisible, replyVisible, deleteVisible;
+    let html = '', currentUsername = comments.currentUser.username, editVisible, replyVisible, deleteVisible, tagVisible;
     
 
     comments.comments.forEach(comment => {
@@ -93,10 +93,12 @@ async function renderComments() {
             editVisible = "";    
             deleteVisible = "";
             replyVisible = "invisible";
+            tagVisible = "";
         } else {
             editVisible = "invisible";    
             deleteVisible = "invisible";
             replyVisible = "";
+            tagVisible = "invisible";
         }
 
         let htmlSegment = 
@@ -112,6 +114,7 @@ async function renderComments() {
                         <div class="comment__info">
                             <img class="comment__info_avatar" src="${comment.user.image.png}"></img>
                             <div class="comment__info_user">${comment.user.username}</div>
+                            <div class="comment__info_tag ${tagVisible}">você</div>
                             <div class="comment__info_date">${comment.createdAt}</div>          
                         </div>        
                         <div class="comment__actions">
@@ -142,6 +145,7 @@ async function renderComments() {
                         <div class="comment__info">
                             <img class="comment__info_avatar" src="${comment.user.image.png}"></img>
                             <div class="comment__info_user">${comment.user.username}</div>
+                            <div class="comment__info_tag">você</div>
                             <div class="comment__info_date">${comment.createdAt}</div>          
                         </div>        
                         <div class="comment__actions">
@@ -162,10 +166,12 @@ async function renderComments() {
                 editVisible = "";    
                 deleteVisible = "";
                 replyVisible = "invisible";
+                tagVisible = "";
             } else {
                 editVisible = "invisible";    
                 deleteVisible = "invisible";
                 replyVisible = "";
+                tagVisible = "invisible";                
             }            
 
             let htmlSegment = 
@@ -181,6 +187,7 @@ async function renderComments() {
                             <div class="comment__info">
                                 <img class="comment__info_avatar" src="${replie.user.image.png}"></img>
                                 <div class="comment__info_user">${replie.user.username}</div>
+                                <div class="comment__info_tag ${tagVisible}">você</div>
                                 <div class="comment__info_date">${replie.createdAt}</div>          
                             </div>        
                             <div class="comment__actions">
@@ -211,6 +218,7 @@ async function renderComments() {
                             <div class="comment__info">
                                 <img class="comment__info_avatar" src="${replie.user.image.png}"></img>
                                 <div class="comment__info_user">${replie.user.username}</div>
+                                <div class="comment__info_tag">você</div>
                                 <div class="comment__info_date">${replie.createdAt}</div>          
                             </div>    
                             <div class="comment__actions">
@@ -223,9 +231,7 @@ async function renderComments() {
                             <button class="comment__send_button">Atualizar</button>                                   
                         </div>         
                     </div>                                                                               
-                </div>`
-                
-                
+                </div>`                               
             
             html += htmlSegment;                
 
