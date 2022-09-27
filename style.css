@@ -10,7 +10,7 @@ body main {
     background-color: hsl(223, 19%, 93%);
     color: #7C7C7C;
     display: flex;
-    height: 100%;
+    height: 100VH;
     justify-content: center;
     padding: 1rem;
 }
@@ -43,12 +43,15 @@ body main {
     flex-direction: column;
     justify-content: space-around;
     margin-right: 1rem;        
-    width: 3rem;
+    padding: 0.5rem;
+    width: auto;
 }
 
 .comment__score span {
     color: #5B59A1;    
-    font-weight: bold;
+    font-weight: bold;       
+    text-align: center;
+    width: 1rem;
 }
 
 .comment__score img {
@@ -112,7 +115,7 @@ body main {
 
 .comment_send {        
     align-items: flex-start;    
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
 }
 
 .comment__send_button {
