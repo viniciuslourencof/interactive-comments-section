@@ -11,10 +11,90 @@
   <link rel="stylesheet" href="style.css">
   
   <title>Interactive comments section</title>
-  <script src="index.js"></script>
+
+  <script>
+    function toggleModal(id) {    
+        let buttonId;
+        
+        document.querySelector(".modal").classList.toggle("show-modal");        
+
+        if (id) {
+            document.querySelector(".modal").id = id;
+            buttonId = id; 
+        }
+        else {
+            buttonId = document.querySelector(".modal").id;
+        }
+
+        if (document.getElementById("buttonDelete_"+buttonId).classList.contains('disabled')) {
+            document.getElementById("buttonDelete_"+buttonId).classList.remove('disabled');        
+        } else {
+            document.getElementById("buttonDelete_"+buttonId).classList.add('disabled');                
+        }           
+    }
+
+    function windowOnClick(event) {
+        if (event.target === document.querySelector(".modal")) {
+            toggleModal();
+        }
+    }
+
+    function editComment(id) {
+        if (document.getElementById("buttonEdit_"+id).classList.contains('disabled')) {
+
+            document.getElementById("buttonEdit_"+id).classList.remove('disabled');
+            document.getElementById("updateComment_"+id).classList.add('invisible');        
+
+            if (document.getElementById("comment_"+id))     
+                document.getElementById("comment_"+id).classList.remove('invisible');
+
+            if (document.getElementById("commentReply_"+id))                        
+                document.getElementById("commentReply_"+id).classList.remove('invisible');     
+
+        } else {
+
+            document.getElementById("buttonEdit_"+id).classList.add('disabled'); 
+            document.getElementById("updateComment_"+id).classList.remove('invisible');        
+
+            if (document.getElementById("comment_"+id))
+                document.getElementById("comment_"+id).classList.add('invisible');                
+
+            if (document.getElementById("commentReply_"+id))            
+                document.getElementById("commentReply_"+id).classList.add('invisible');                
+
+        }         
+    }
+
+    function replyToComment (id) {       
+        if (document.getElementById("buttonReply_"+id).classList.contains('disabled')) {
+            document.getElementById("buttonReply_"+id).classList.remove('disabled');
+            document.getElementById("replyToComment_"+id).classList.add('invisible');        
+        } else {
+            document.getElementById("buttonReply_"+id).classList.add('disabled');        
+            document.getElementById("replyToComment_"+id).classList.remove('invisible');        
+        }        
+    }
+
+    function replyToReply (id) {   
+        
+        if (document.getElementById("buttonReply_"+id).classList.contains('disabled')) {
+            document.getElementById("buttonReply_"+id).classList.remove('disabled');
+            document.getElementById("replyToReply_"+id).classList.add('invisible');        
+        } else {
+            document.getElementById("buttonReply_"+id).classList.add('disabled');        
+            document.getElementById("replyToReply_"+id).classList.remove('invisible');        
+        }        
+    }
+
+    window.addEventListener("click", windowOnClick);           
+  </script> 
+  
 
 </head>
 <body>
+
+  
+
   <main>
 
   <div class="comments" id="comments">  
@@ -31,8 +111,7 @@
     </div>
   </div>  
 
-  </main>
-
+  </main>  
   
 </body>
 </html>

@@ -5,12 +5,16 @@
     padding: 0;
 }
 
+body {
+    height: 100%;
+}
+
 body main {
     align-items: center;
     background-color: hsl(223, 19%, 93%);
     color: #7C7C7C;
     display: flex;
-    height: 100VH;
+    height: 100%;
     justify-content: center;
     padding: 1rem;
 }
@@ -22,6 +26,7 @@ body main {
     height: auto;
     width: 70%;    
 }
+
 .comment {
     align-items: center;
     background-color: white;
@@ -114,8 +119,7 @@ body main {
 }
 
 .comment_send {        
-    align-items: flex-start;    
-    /* margin-bottom: 0; */
+    align-items: flex-start;        
 }
 
 .comment__send_button {
@@ -256,3 +260,5 @@ body main {
     background-color: #68727E;
     color: white;
 }
+
+
