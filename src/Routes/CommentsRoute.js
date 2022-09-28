@@ -6,3 +6,4 @@ module.exports = (app) => {
    app.get('/comments', CommentsController.get);
    app.get('/comment/:id', CommentsController.getById);
 }
+
