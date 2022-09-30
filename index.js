@@ -1,4 +1,4 @@
-import { get } from "./src/Controllers/CommentsController";
+import { get } from "http://localhost:5500/src/Controllers/CommentsController";
 
 async function renderComments() {
     let comments = get();
