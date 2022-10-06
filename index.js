@@ -1,7 +1,16 @@
-import { get } from "http://localhost:5500/src/Controllers/CommentsController";
+
+async function getComments() {
+    let url = 'http://localhost:3333/comments';
+    try {
+        let res = await fetch(url);
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 async function renderComments() {
-    let comments = get();
+    let comments = getComments();
 
     let html = '', currentUsername = comments.currentUser.username, editVisible, replyVisible, deleteVisible, tagVisible;    
 
