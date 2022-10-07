@@ -88,6 +88,9 @@ exports.post = (req, res, next) => {
   
  exports.delete = (req, res, next) => {
     let id = req.params.id;
+
+    bd.splice(numeros.indexOf(id), 1);
+
     res.status(200).send(`Rota DELETE com ID! --> ${id}`);
  };
   

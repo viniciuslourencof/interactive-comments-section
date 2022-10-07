@@ -1,7 +1,3 @@
-// const CommentsRoute = require('./CommentsRoute');
-// module.exports = (app) => {
-//     CommentsRoute(app)
-// }
 
 const express = require('express');
 const router = express.Router();
