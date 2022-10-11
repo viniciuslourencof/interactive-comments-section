@@ -262,4 +262,32 @@ body main {
     color: white;
 }
 
+@media screen and (max-width: 480px) {       
+    
+    .comments {
+        width: 100%;
+    }    
+    
+    .comment__actions {
+        display: none;
+    }
 
+    .comment {
+        flex-direction: column;
+        align-items: flex-start;        
+    }
+
+    .comment__score {
+        flex-direction: row;
+        height: 2rem;
+        width: 5rem;                    
+    }
+ 
+    .comment_reply {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90%;
+        left: 10%;
+    }
+
+}

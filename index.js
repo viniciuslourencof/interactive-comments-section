@@ -232,15 +232,17 @@ async function cadastrar(){
 // remove um pokemon do banco de dados
 // quem chamar a função remove pode fazer outra ação antes de
 // receber resposta
-async function remove(id){
+async function remove(){
+
+    let id;
+    document.querySelector(".modal").id = id;
         
     // chama a api -> é síncrona (aguardamos o retorna do servidor)
     await fetch(`http://localhost:3333/comments/${id}`, {
         method:'DELETE'
     })
-    .then (response => { // quando o servidor retornou
-        alert(`Comentário foi removido com sucesso`)
-        consultar()
+    .then (response => { // quando o servidor retornou        
+        renderComments()
     })
     .catch( error => { // houve erro na comunicação com servidor
         alert(`Problema na remoção`)
