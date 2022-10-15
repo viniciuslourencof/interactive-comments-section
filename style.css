@@ -262,14 +262,40 @@ body main {
     color: white;
 }
 
+.comment__actions--mobile {
+    display: none;        
+}
+
+.comment__score--mobile {
+    display: none;        
+}
+
 @media screen and (max-width: 480px) {       
     
     .comments {
         width: 100%;
     }    
     
-    .comment__actions {
+    .comment__actions--desktop {
         display: none;
+    }
+
+    .comment__actions--mobile {
+        display: flex;        
+    }
+
+    .comment__score--desktop {
+        display: none;
+    }
+
+    .comment__score--mobile {
+        display: flex;        
+    }    
+
+    .comment__bottomline--mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .comment {
@@ -288,6 +314,9 @@ body main {
         align-items: flex-start;
         width: 90%;
         left: 10%;
+    }
+    .comment__container {
+        width: -webkit-fill-available;
     }
 
 }
