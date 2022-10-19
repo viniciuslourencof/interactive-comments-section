@@ -281,7 +281,8 @@ body main {
     }
 
     .comment__actions--mobile {
-        display: flex;        
+        display: flex;     
+        width: auto;   
     }
 
     .comment__score--desktop {
@@ -290,12 +291,14 @@ body main {
 
     .comment__score--mobile {
         display: flex;        
+        margin-right: 0;        
     }    
 
     .comment__bottomline--mobile {
         display: flex;
-        align-items: center;
+        align-items: center;        
         justify-content: space-between;
+        margin-top: 1rem;
     }
 
     .comment {
@@ -319,4 +322,40 @@ body main {
         width: -webkit-fill-available;
     }
 
+    .comment__actions_button{
+        margin-left: 1rem;
+    }
+
+    .comment_send img {
+        margin-top: 70px;
+    }
+
+    .comment__textarea {
+        margin-top: -110px;
+        width: 100%;
+    }
+
+    .comment__send_button {
+        align-self: flex-end;   
+        margin-top: 10px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+    
+    .modal-content button {
+        width: 43%;
+        margin-right: 0.5rem;
+    }
+
+    .comment_reply__textarea {
+        margin-top: -110px;
+        width: 100%;
+    }
+
+    
+    .comment_send_reply img {
+        margin-top: 70px;
+    }
 }

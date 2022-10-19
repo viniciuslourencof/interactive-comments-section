@@ -1,6 +1,7 @@
 
 async function getComments() {
-    let url = 'http://localhost:3333/comments';        
+    // let url = 'http://localhost:3333/comments';        
+    let url = 'https://raw.githubusercontent.com/viniciuslourencof/interactive-comments-section/main/data.json'
     try {
         let res = await fetch(url);
         return await res.json();
@@ -57,18 +58,17 @@ async function renderComments() {
                         </div>  
                         <div class="comment__text">${comment.content}</div>     
 
-                        <div class="comment__bottomline--mobile">
-                            <div class="comment__actions comment__actions--mobile">
-                                <button id="buttonReply_${comment.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                                <button id="buttonDelete_${comment.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(${comment.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
-                                <button id="buttonEdit_${comment.id}" class="comment__actions_button purple_font ${editVisible}" onclick="editComment(${comment.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
-                            </div>        
-                            
+                        <div class="comment__bottomline--mobile">                                                        
                             <div class="comment__score comment__score--mobile">
                                 <img src="images/icon-plus.svg" alt="">
                                 <span>${comment.score}</span>
                                 <img src="images/icon-minus.svg" alt="">
                             </div>                    
+                            <div class="comment__actions comment__actions--mobile">
+                                <button id="buttonReply_${comment.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                                <button id="buttonDelete_${comment.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(${comment.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                                <button id="buttonEdit_${comment.id}" class="comment__actions_button purple_font ${editVisible}" onclick="editComment(${comment.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                            </div>                                    
                         </div>    
 
 
@@ -147,25 +147,23 @@ async function renderComments() {
                             <div class="comment__text">${replie.content}</div>     
 
                             <div class="comment__bottomline--mobile">
-                                <div class="comment__actions comment__actions--mobile">
-                                    <button id="buttonReply_${replie.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
-                                    <button id="buttonDelete_${replie.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(${replie.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
-                                    <button id="buttonEdit_${replie.id}" class="comment__actions_button purple_font ${editVisible}" onclick="editComment(${replie.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
-                                </div>        
-                                
                                 <div class="comment__score comment__score--mobile">
                                     <img src="images/icon-plus.svg" alt="">
                                     <span>${replie.score}</span>
                                     <img src="images/icon-minus.svg" alt="">
                                 </div>                                                    
-                            </div>                                
-
+                                <div class="comment__actions comment__actions--mobile">
+                                    <button id="buttonReply_${replie.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                                    <button id="buttonDelete_${replie.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(${replie.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
+                                    <button id="buttonEdit_${replie.id}" class="comment__actions_button purple_font ${editVisible}" onclick="editComment(${replie.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
+                                </div>                                                                       
+                            </div>                             
                         </div>          
 
                         
                     </div>   
 
-                    <div id="replyToReply_${replie.id}" class="comment_reply invisible">
+                    <div id="replyToReply_${replie.id}" class="comment_reply invisible comment_send_reply">
                         <img class="comment__info_avatar" src="${comments.currentUser.image.png}"></img>
                         <textarea class="comment_reply__textarea" placeholder="Adicione um comentário..." form=""></textarea>
                         <button class="comment__send_button">Responder</button>
