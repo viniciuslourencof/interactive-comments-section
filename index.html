@@ -71,9 +71,11 @@
     function replyToComment (id) {       
         if (document.getElementById("buttonReply_"+id).classList.contains('disabled')) {
             document.getElementById("buttonReply_"+id).classList.remove('disabled');
+            document.getElementById("buttonReplyMob_"+id).classList.remove('disabled');                    
             document.getElementById("replyToComment_"+id).classList.add('invisible');        
         } else {
-            document.getElementById("buttonReply_"+id).classList.add('disabled');        
+            document.getElementById("buttonReply_"+id).classList.add('disabled');                   
+            document.getElementById("buttonReplyMob_"+id).classList.add('disabled');        
             document.getElementById("replyToComment_"+id).classList.remove('invisible');        
         }        
     }
@@ -82,9 +84,11 @@
         
         if (document.getElementById("buttonReply_"+id).classList.contains('disabled')) {
             document.getElementById("buttonReply_"+id).classList.remove('disabled');
+            document.getElementById("buttonReplyMob_"+id).classList.remove('disabled');            
             document.getElementById("replyToReply_"+id).classList.add('invisible');        
         } else {
-            document.getElementById("buttonReply_"+id).classList.add('disabled');        
+            document.getElementById("buttonReply_"+id).classList.add('disabled');       
+            document.getElementById("buttonReplyMob_"+id).classList.add('disabled');                         
             document.getElementById("replyToReply_"+id).classList.remove('invisible');        
         }        
     }

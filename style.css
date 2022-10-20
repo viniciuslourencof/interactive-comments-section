@@ -240,10 +240,6 @@ body main {
     display: none;
 }
 
-.disabled {
-    opacity: 0.5;
-}
-
 .purple_font {
     color: #5357B6;
 }
@@ -268,6 +264,10 @@ body main {
 
 .comment__score--mobile {
     display: none;        
+}
+
+.disabled {
+    opacity: 0.5;
 }
 
 @media screen and (max-width: 480px) {       
@@ -381,9 +381,6 @@ body main {
         top: 25px;
         right: 20px;
         width: fit-content;
-    }
-
-
-    
+    }       
     
 }

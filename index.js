@@ -65,7 +65,7 @@ async function renderComments() {
                                 <img src="images/icon-minus.svg" alt="">
                             </div>                    
                             <div class="comment__actions comment__actions--mobile">
-                                <button id="buttonReply_${comment.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                                <button id="buttonReplyMob_${comment.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToComment(${comment.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
                                 <button id="buttonDelete_${comment.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(${comment.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
                                 <button id="buttonEdit_${comment.id}" class="comment__actions_button purple_font ${editVisible}" onclick="editComment(${comment.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
                             </div>                                    
@@ -153,7 +153,7 @@ async function renderComments() {
                                     <img src="images/icon-minus.svg" alt="">
                                 </div>                                                    
                                 <div class="comment__actions comment__actions--mobile">
-                                    <button id="buttonReply_${replie.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
+                                    <button id="buttonReplyMob_${replie.id}" class="comment__actions_button purple_font ${replyVisible}" onclick="replyToReply(${replie.id})"><img src="images/icon-reply.svg" alt="">Responder</button>                        
                                     <button id="buttonDelete_${replie.id}" class="comment__actions_button red_font trigger ${deleteVisible}" onclick="toggleModal(${replie.id})"><img src="images/icon-delete.svg" alt="">Deletar</button>    
                                     <button id="buttonEdit_${replie.id}" class="comment__actions_button purple_font ${editVisible}" onclick="editComment(${replie.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
                                 </div>                                                                       
