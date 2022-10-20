@@ -169,7 +169,7 @@ async function renderComments() {
                         <button class="comment__send_button">Responder</button>
                     </div>
                     
-                    <div class="comment_reply invisible" id="updateComment_${replie.id}">
+                    <div class="comment_reply comment_update invisible" id="updateComment_${replie.id}">
                         <div class="comment__score">
                             <img src="images/icon-plus.svg" alt="">
                             <span>${replie.score}</span>
@@ -184,7 +184,7 @@ async function renderComments() {
                                     <div class="comment__info_tag">você</div>
                                     <div class="comment__info_date">${replie.createdAt}</div>          
                                 </div>    
-                                <div class="comment__actions">
+                                <div class="comment__actions button_edit">
                                     <button id="buttonEdit_${replie.id}" class="comment__actions_button purple_font ${editVisible} disabled" onclick="editComment(${replie.id})"><img src="images/icon-edit.svg" alt="">Editar</button>            
                                 </div>                                                                   
                             </div>         

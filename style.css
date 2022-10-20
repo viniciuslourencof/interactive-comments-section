@@ -349,13 +349,31 @@ body main {
         margin-right: 0.5rem;
     }
 
-    .comment_reply__textarea {
+    .comment_send_reply .comment_reply__textarea {
         margin-top: -110px;
         width: 100%;
+        height: 100%;
     }
-
     
     .comment_send_reply img {
         margin-top: 70px;
     }
+
+    .comment_reply .comment_update__container {
+        width: 100%;
+    }
+
+    .comment_update__container .comment__info {
+        position: absolute;
+    }
+
+    .comment_update .comment__score {
+        position: relative;
+        top: 179px;     
+    }
+
+ 
+
+    
+    
 }
