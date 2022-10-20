@@ -369,10 +369,20 @@ body main {
 
     .comment_update .comment__score {
         position: relative;
-        top: 179px;     
+        top: 190px;     
     }
 
- 
+    .comment_update .comment__info {
+        position: relative;
+    }
+
+    .button_edit {
+        position: absolute;
+        top: 25px;
+        right: 20px;
+        width: fit-content;
+    }
+
 
     
     
